@@ -1,6 +1,2 @@
-*.idea
-*.iml
-*.ims
-*.ipr
-*.class
-*.zip
+target
+.idea
