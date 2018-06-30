@@ -1,10 +1,19 @@
 package ro.siit.java.pds;
 
-import java.util.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-public class Main {
-    public static void main(String[] args) {
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
+import static org.junit.Assert.*;
+
+public class FacilityTest {
+
+    @Before
+    public void setUp() throws Exception {
         // setting the paths and the distance based on Romania's map: 5 cities
         City Cluj = new City("Cluj");
         City Brasov = new City("Brasov");
@@ -20,14 +29,6 @@ public class Main {
         Iasi.adjacencies = new Edge[]{new Edge(Cluj, 391), new Edge(Bucuresti, 388), new Edge(Brasov, 307)};
         Timisoara.adjacencies = new Edge[]{new Edge(Cluj, 317), new Edge(Bucuresti, 550), new Edge(Brasov, 412)};
 
-
-        //compute paths
-        City sourceCity = Timisoara;
-        City destinationCity = Iasi;
-
-        ParcelRouteCalculation.computePaths(sourceCity);
-        List<City> path = ParcelRouteCalculation.getShortestPathTo(destinationCity);
-        System.out.println("Shortest distance from " + sourceCity + " to " + destinationCity + " is " + destinationCity.shortestDistance + " via " + path);
 
         //initializing 2 packages
 
@@ -55,11 +56,16 @@ public class Main {
         Facility ClujFacility = new Facility("Cluj", filteringQueue, delivery, transport);
 
         ClujFacility.filterPackages(filteringQueue, ClujFacility);
-        System.out.println(ClujFacility.getTransportPickUpQueue().size());
-        System.out.println(ClujFacility.getDeliveryPickUpQueue().size());
 
 
     }
 
-}
 
+
+    @Test
+    public void filterPackages() {
+
+        //assertEquals(1, .deliveryPickUpQueue.length());
+
+    }
+}
